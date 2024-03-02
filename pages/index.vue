@@ -1,21 +1,8 @@
 <script setup>
 
-const articles = ref([])
+const {data, pending, error, refresh} = await useFetch('https://zenn.dev/api/articles?username=nemunyan')
 
-const fetchZennArticles = () => {
-  fetch('https://zenn.dev/api/articles?username=nemunyan')
-    .then((res) => res.json())
-    .then((data) => {
-      articles.value = data
-    })
-    .catch((err) => {
-      console.error(err)
-    })
-}
-
-onMounted(() => {
-  fetchZennArticles()
-})
+const articles = data.value.articles
 
 </script>
 
