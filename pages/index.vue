@@ -1,9 +1,14 @@
-<script setup>
+<script setup lang="ts">
+import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
+
 const { data, pending, error, refresh } = await useFetch('https://zenn.dev/api/articles?username=nemunyan')
 
 const articles = data.value.articles.slice(0, 3)
 
 console.log(articles)
+
+const blogs: QueryBuilderParams = ref({ path: '/blog', limit: 3, sort: [{ date: -1 }] })
+console.log(blogs)
 
 </script>
 
@@ -34,14 +39,31 @@ console.log(articles)
       </div>
     </div>
     <div class="flex flex-col md:flex-row mt-6">
-      <div class="border rounded-md mx-4 bg-zinc-900">
-        <div class="flex items-center px-2 pt-2">
+      <div class="border rounded-md bg-zinc-900 max-w-[800px] px-4">
+        <div class="relative flex items-center justify-center mt-4 min-w-40">
           <img src="/zenn.png" class="w-6 h-6">
           <p class="text-lg">最新投稿</p>
+          <NuxtLink to="https://zenn.dev/nemunyan">
+            <p class="absolute right-0 top-0 hover:bg-zinc-600 duration-150">more→</p>
+          </NuxtLink>
         </div>
-        <div v-for="article in articles" :key="article.id" class="w-full md:w-1/3 mt-4 ">
+        <div v-for="article in articles" :key="article.id" class="mt-2">
           <ArticleCard :article="article" />
         </div>
+        <div class="mb-2"></div>
+      </div>
+      <div class="border rounded-md bg-zinc-900 max-w-[800px] px-4 mt-2 md:mt-0">
+        <div class="relative flex items-center justify-center mt-4 min-w-40">
+          <p class="text-lg">新着記事</p>
+          <NuxtLink to="/blog">
+            <p class="absolute right-0 top-0 hover:bg-zinc-600 duration-150">more→</p>
+          </NuxtLink>
+        </div>
+        <ContentList :query="query" v-slot="{ list }">
+          <article v-for="page in list" :key="page._path">
+            <BlogCard :blog="page" />
+          </article>
+        </ContentList>
       </div>
     </div>
   </div>
