@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 
-const { data, pending, error, refresh } = await useFetch('https://zenn.dev/api/articles?username=nemunyan')
+const data = await useFetch('/api/zenn')
+const articles = data.data.value.articles.slice(0, 3)
 
-const articles = data.value.articles.slice(0, 3)
-
-console.log(articles)
 
 const blogs: QueryBuilderParams = ref({ path: '/blog', limit: 3, sort: [{ date: -1 }] })
-console.log(blogs)
 
 </script>
 
@@ -60,7 +57,7 @@ console.log(blogs)
           </NuxtLink>
         </div>
         <ContentList :query="query" v-slot="{ list }">
-          <article v-for="page in list" :key="page._path">
+          <article v-for="page in list" :key="page._path" class="mt-2 min-w-80">
             <BlogCard :blog="page" />
           </article>
         </ContentList>
