@@ -5,6 +5,8 @@ const data = await useFetch('/api/zenn')
 const articles = data.data.value.articles.slice(0, 3)
 
 const query: QueryBuilderParams = { path: '/blog', limit: 3, sort: [{ date: -1 }] }
+const contentQuery  = await useAsyncData('home', () => queryContent('blog').find())
+console.log(contentQuery)
 
 </script>
 
@@ -55,7 +57,7 @@ const query: QueryBuilderParams = { path: '/blog', limit: 3, sort: [{ date: -1 }
             <p class="absolute right-0 top-0 hover:bg-zinc-600 duration-150">more→</p>
           </NuxtLink>
         </div>
-        <ContentList path="/blog" v-slot="{ list }">
+        <ContentList :query="query" v-slot="{ list }">
           <article v-for="page in list" :key="page._path" class="mt-2 min-w-80">
             <BlogCard :blog="page" />
           </article>
