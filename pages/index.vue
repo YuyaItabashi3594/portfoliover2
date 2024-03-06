@@ -4,8 +4,8 @@ import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 const data = await useFetch('/api/zenn')
 const articles = data.data.value.articles.slice(0, 3)
 
-const query: QueryBuilderParams = { path: '/blog', limit: 3, sort: [{ date: -1 }] }
-const contentQuery  = await useAsyncData('home', () => queryContent('blog').find())
+const query: QueryBuilderParams = { path: '/blog/', limit: 3, sort: [{ date: -1 }] }
+const contentQuery  = await useAsyncData('home', () => queryContent('blog/').find())
 console.log(contentQuery)
 
 </script>
