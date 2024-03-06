@@ -5,7 +5,7 @@ const data = await useFetch('/api/zenn')
 const articles = data.data.value.articles.slice(0, 3)
 
 const query: QueryBuilderParams = { path: '/blog/', limit: 3, sort: [{ date: -1 }] }
-const contentQuery  = await useAsyncData('home', () => queryContent('blog/').find())
+const contentQuery  = await useAsyncData('home', () => queryContent('blog').find())
 console.log(contentQuery)
 
 </script>
@@ -65,5 +65,4 @@ console.log(contentQuery)
       </div>
     </div>
   </div>
-  <NuxtWelcome />
 </template>
