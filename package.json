@@ -22,5 +22,8 @@
     "vue": "^3.4.19",
     "vue-markdown-render": "^2.0.1",
     "vue-router": "^4.3.0"
-  }
+  },
+  "resolutions": {
+    "nitropack": "2.8.1"
+}
 }
