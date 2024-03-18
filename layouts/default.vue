@@ -11,7 +11,7 @@
         </div>
       </div>
       <div v-else>
-        <h1>Desktop板のレイアウトは工事中です。</h1>
+        <NavbarDesktop />
         <slot />
       </div>
     </div>
