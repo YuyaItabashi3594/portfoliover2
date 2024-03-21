@@ -3,7 +3,7 @@
 <template>
   <div class="flex items-center justify-center">
     <NuxtLink to="/">
-      <div class="text-center text-lg py-2 px-6 hover:bg-zinc-700 duration-150">
+      <div class="text-center text-lg py-2 px-6 duration-150">
         nemunyan's room
       </div>
     </NuxtLink>

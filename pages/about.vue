@@ -27,10 +27,18 @@ const histories = [
   }
 ]
 
+const favorites = [
+  {
+    title: 'beatmania IIDX',
+    img: '/about/iidxlm.jpg',
+    description: '高校一年の頃からずっとプレイしているアーケードの音楽ゲームです。'
+  }
+]
+
 </script>
 
 <template>
-  <div class="flex flex-col md:flex-row items-center justify-center">
+  <div class="flex flex-col xl:flex-row items-center justify-center">
     <div class="flex flex-col items-center justify-center px-4 mt-4">
       <div class="text-2xl">History</div>
       <div class="flex flex-col">
@@ -43,8 +51,9 @@ const histories = [
       </div>
     </div>
     <div class="flex flex-col items-center justify-center px-4 mt-4">
-      <div class="text-2xl">Favorite Things</div>
-      <div class="flex flex-col">
+      <div class="text-2xl">Favorite Things(クリックで裏返す)</div>
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <FavoriteCard v-for="data in favorites" :data=data />
       </div>
     </div>
   </div>

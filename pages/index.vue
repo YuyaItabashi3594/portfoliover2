@@ -33,7 +33,7 @@ const query: QueryBuilderParams = { path: '/blog', limit: 3, sort: [{ date: -1 }
         <Logo :language="'laravel'" :url="'https://laravel.com/'" />
       </div>
     </div>
-    <div class="flex flex-col md:flex-row mt-6">
+    <div class="flex flex-col xl:flex-row mt-6">
       <div class="border rounded-md bg-zinc-900 max-w-[800px] px-4">
         <div class="relative flex items-center justify-center mt-4 min-w-40">
           <img src="/zenn.png" class="w-6 h-6">
