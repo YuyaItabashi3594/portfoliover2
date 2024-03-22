@@ -1,7 +1,20 @@
 <script setup>
+const nuxtApp = useNuxtApp();
+const loading = ref(true);
+nuxtApp.hook("page:start", () => {
+  loading.value = true;
+});
+nuxtApp.hook("page:finish", () => {
+  loading.value = false;
+});
 </script>
 
 <template>
+  <Transition name="loading">
+    <div v-if="loading" class="fixed inset-0 flex items-center justify-center z-50 w-full h-full bg-black">
+      Loading
+    </div>
+  </Transition>
   <div class="min-h-screen flex flex-col">
     <div class="mb-10">
       <div v-if="$device.isMobile">
@@ -25,5 +38,13 @@
 body {
   background-color: black;
   color: white;
+}
+
+.loading-leave-active {
+  transition: opacity 1.0s ease;
+}
+
+.loading-leave-to {
+  opacity: 0;
 }
 </style>
