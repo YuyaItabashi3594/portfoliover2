@@ -9,7 +9,7 @@ const isFlipped = ref(false)
 </script>
 
 <template>
-  <div class="relative duration-150" @click="isFlipped = !isFlipped">
+  <div class="relative duration-150 hover:cursor-pointer" @click="isFlipped = !isFlipped">
     <transition name="flip" mode="out-in">
       <div v-if="isFlipped === false">
         <img :src="props.data.img" :alt="`${props.data.title}の画像`" class="opacity-60 z-0 object-fill w-52 h-64">

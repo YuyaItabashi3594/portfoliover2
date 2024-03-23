@@ -12,7 +12,7 @@
   </main>
 </template>
 
-<style>
+<style scoped>
 .markdown h1 {
   font-size: 2em;
 }
